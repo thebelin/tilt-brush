@@ -1187,8 +1187,7 @@ static class BuildTiltBrush {
     case BuildTarget.StandaloneWindows:
     case BuildTarget.StandaloneWindows64: {
       looseFilesDest = Path.GetDirectoryName(path);
-
-      if (info.vrSdk == SdkMode.Oculus) {
+      if (info != null && info.vrSdk == SdkMode.Oculus) {
         // Oculus will reject submissions that have openvr dlls
         string openvrDll = Path.Combine(Path.Combine(dataDir, "Plugins"), "openvr_api.dll");
         if (File.Exists(openvrDll)) {
@@ -1250,12 +1249,14 @@ static class BuildTiltBrush {
     } else {
       // In the editor, Application.dataPath is the Assets/ folder
       string sourceBase = Path.GetDirectoryName(Application.dataPath);
-      ExecuteCopyRequests(info.copyRequests, sourceBase, looseFilesDest);
+      ExecuteCopyRequests(info != null ? info.copyRequests : null, sourceBase, looseFilesDest);
     }
   }
 
   private static void ExecuteCopyRequests(List<CopyRequest> requests, string sourceBase, 
                                           string destBase) {
+        if (requests == null)
+            return;
     foreach (var copyRequest in requests) {
       string copySource = Path.Combine(sourceBase, copyRequest.source);
       string copyDest = Path.Combine(destBase, copyRequest.dest);

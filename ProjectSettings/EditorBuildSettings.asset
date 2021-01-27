@@ -10,5 +10,14 @@ EditorBuildSettings:
     guid: 986988be0805f97429165d132ec1d34b
   - enabled: 1
     path: Assets/Scenes/Main.unity
+    guid: 527c905504c5cc84bba7fa4c6a1b4ed7
+  - enabled: 0
+    path: Assets/Scenes/Main - ControllerFutz.unity
+    guid: 41ffb2831e648584ea00318af357de15
+  - enabled: 0
+    path: Assets/Scenes/Main-Test.unity
+    guid: 4c777302ef210c24486f9bb0b73df59d
+  - enabled: 0
+    path: Assets/Scenes/Main-og.unity
     guid: 07df4d63df340f74ca58824df3cab9ea
   m_configObjects: {}
